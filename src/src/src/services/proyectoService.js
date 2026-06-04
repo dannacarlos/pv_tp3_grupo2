@@ -1,55 +1,69 @@
 const proyectoService = (() => {
-  // Arreglo actualizado con la información extendida requerida (descripción, recursos y equipo)
+  // Arreglo inicial con al menos 5 objetos detallados (Requisito de Parte 1, 2 y 3)
   let proyectos = [
-    { 
-      id: 1, 
-      titulo: "Sistema de Alertas SAME", 
-      categoria: "Salud", 
+    {
+      id: 1,
+      titulo: "Desarrollo de Aula Virtual UNJu",
+      categoria: "Educación",
       estado: "En Curso",
-      descripcion: "Este proyecto consiste en el desarrollo de un módulo de software interactivo para optimizar los tiempos de respuesta ante emergencias médicas en la provincia. Permite geolocalizar ambulancias en tiempo real y coordinar con las centrales de despacho de manera automatizada.",
-      recursos: { pdf: "https://same.jujuy.gob.ar/informe.pdf", drive: "https://drive.google.com/same-tp3", github: "https://github.com/grupo2/same-app" },
+      descripcion: "Esta plataforma está diseñada específicamente para optimizar el entorno de aprendizaje virtual de la Universidad Nacional de Jujuy. Permite una interconexión fluida entre docentes y alumnos de todas las facultades.\n\nEl sistema soporta la carga masiva de archivos pesados, exámenes interactivos con corrección automatizada y un módulo de foros académicos avanzados para debates disciplinares.",
+      recursos: { pdf: "#", drive: "#", github: "#" },
       equipo: [
-        { nombre: "Danna Rios", rol: "Coordinadora de Desarrollo" },
-        { nombre: "Santiago López", rol: "Diseñador de Interfaz (UI/UX)" }
+        { nombre: "Ariel Choque", rol: "Coordinador General" },
+        { nombre: "Danna Rios", rol: "Desarrolladora Frontend" }
       ]
     },
-    { 
-      id: 2, 
-      titulo: "E-commerce de Artesanías", 
-      categoria: "Comercio", 
-      estado: "Completado",
-      descripcion: "Plataforma web orientada a la visibilización y comercialización de productos artesanales de la Quebrada de Humahuaca. Ofrece un catálogo interactivo, pasarela de pagos regionales y un panel de administración intuitivo para los artesanos.",
-      recursos: { pdf: "https://artesanias.org/manual.pdf", drive: "https://drive.google.com/artesanias", github: "https://github.com/grupo2/artesanias-shop" },
-      equipo: [
-        { nombre: "Nico Torres", rol: "Desarrollador Backend" },
-        { nombre: "Tati Benitez", rol: "Especialista en Bases de Datos" }
-      ]
-    },
-    { 
-      id: 3, 
-      titulo: "Gestión de Notas Universitarias", 
-      categoria: "Educación", 
+    {
+      id: 2,
+      titulo: "Sistema de Comedor Universitario",
+      categoria: "Institucional",
       estado: "Pendiente",
-      descripcion: "Un entorno digital pensado para centralizar la carga de calificaciones, asistencias y actas de examen de la Facultad de Ingeniería. Promueve la despapelización administrativa y facilita el acceso a la información académica de los estudiantes.",
-      recursos: { pdf: "https://unju.edu.ar/proyecto-notas.pdf", drive: "https://drive.google.com/unju-notas", github: "https://github.com/grupo2/unju-notas" },
+      descripcion: "Un software ágil para la gestión de turnos, reservas de menús diarios y control de stock de insumos del comedor. Busca reducir las colas de espera en los horarios pico de las cursadas.\n\nIncluye un sistema de código QR para que los estudiantes universitarios regulares validen su beneficio de manera inmediata al ingresar al establecimiento.",
+      recursos: { pdf: "#", drive: "#", github: "#" },
+      equipo: [{ nombre: "Marcos Aramayo", rol: "Analista de Datos" }]
+    },
+    {
+      id: 3,
+      titulo: "Biblioteca Digital de Ingeniería",
+      categoria: "Investigación",
+      estado: "Completado",
+      descripcion: "Repositorio institucional indexado para almacenar y categorizar tesis, proyectos finales y artículos científicos de la Facultad de Ingeniería. Facilita el acceso democrático al conocimiento académico.\n\nCuenta con un buscador avanzado por palabras clave, autores y años de publicación, además de un lector de PDFs integrado con herramientas de accesibilidad visual.",
+      recursos: { pdf: "#", drive: "#", github: "#" },
       equipo: [
-        { nombre: "Lautaro Gómez", rol: "Desarrollador Frontend" },
-        { nombre: "Martín Bonari", rol: "Analista de Sistemas" }
+        { nombre: "Laura Gutiérrez", rol: "Directora de Proyecto" },
+        { nombre: "Carlos Méndez", rol: "Especialista en Base de Datos" }
       ]
+    },
+    {
+      id: 4,
+      titulo: "App de Control de Asistencia APU",
+      categoria: "Gestión Académica",
+      estado: "En Curso",
+      descripcion: "Aplicación móvil nativa destinada al cuerpo docente de la carrera de Analista Programador Universitario. Permite registrar las asistencias diarias mediante reconocimiento biométrico o geolocalización.\n\nSincroniza los datos automáticamente con el sistema SIU-Guaraní institucional, emitiendo alertas automatizadas a los alumnos en riesgo de perder la regularidad.",
+      recursos: { pdf: "#", drive: "#", github: "#" },
+      equipo: [{ nombre: "Danna Rios", rol: "Fullstack Developer" }]
+    },
+    {
+      id: 5,
+      titulo: "Simulador de Redes Lógicas",
+      categoria: "Ciencias Exactas",
+      estado: "Pendiente",
+      descripcion: "Herramienta didáctica interactiva web para el aprendizaje práctico de topologías de red y direccionamiento IP dentro de las asignaturas de informática. Permite simular fallos de conectividad en tiempo real.\n\nLos alumnos pueden arrastrar componentes virtuales, configurar máscaras de subred y visualizar el viaje de los paquetes de datos a través de gráficos interactivos animados.",
+      recursos: { pdf: "#", drive: "#", github: "#" },
+      equipo: [{ nombre: "Walter Flores", rol: "Diseñador UX/UI" }]
     }
   ];
 
+  // Funciones Flecha del Servicio obligatorias (Parte 1)
   const obtenerProyectos = () => [...proyectos];
 
-  const agregarProyecto = (nuevoProyecto) => {
-    const proyectoConId = { 
-      ...nuevoProyecto, 
-      id: Date.now(),
-      descripcion: nuevoProyecto.descripcion || "Sin descripción detallada por el momento.",
-      recursos: nuevoProyecto.recursos || { pdf: "#", drive: "#", github: "#" },
-      equipo: nuevoProyecto.equipo || [{ nombre: "Integrante", rol: "Desarrollador" }]
+  const agregarProyecto = (proyecto) => {
+    const nuevoProyecto = {
+      ...proyecto,
+      id: proyectos.length > 0 ? Math.max(...proyectos.map(p => p.id)) + 1 : 1
     };
-    proyectos = [...proyectos, proyectoConId];
+    proyectos.push(nuevoProyecto);
+    return nuevoProyecto;
   };
 
   const eliminarProyecto = (id) => {
@@ -57,7 +71,9 @@ const proyectoService = (() => {
   };
 
   const buscarProyecto = (texto) => {
-    return proyectos.filter(p => p.titulo.toLowerCase().includes(texto.toLowerCase()));
+    const termino = texto.toLowerCase().trim();
+    if (!termino) return obtenerProyectos();
+    return proyectos.filter(p => p.titulo.toLowerCase().includes(termino));
   };
 
   return {
